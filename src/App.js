@@ -1,11 +1,22 @@
 import React from 'react'
+import { BrowserRouter, Route, Redirect, Switch } from 'react-router-dom'
 import './App.css'
+import Users from './containers/User/Users/Users'
+import NewPlace from './containers/Place/NewPlace/NewPlace'
 
-function App () {
+const App = () => {
   return (
-    <div className='App'>
-      <h2>Place Sharing</h2>
-    </div>
+    <BrowserRouter>
+      <Switch>
+        <Route path='/' exact>
+          <Users />
+        </Route>
+        <Route path='/places/new' exact>
+          <NewPlace />
+        </Route>
+        <Redirect to='/' />
+      </Switch>
+    </BrowserRouter>
   )
 }
 
