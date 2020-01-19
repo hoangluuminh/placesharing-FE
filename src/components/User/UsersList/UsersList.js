@@ -5,14 +5,13 @@ import UserItem from './UserItem/UserItem'
 
 const usersList = props => {
   return (
-    <div className={styles.UsersList}>
-      {props.items.length < 1 && (
-        <div className={['center'].join(' ')}>
-          <h2>No users found</h2>
-        </div>
-      )}
-      {props.items.length >= 1 &&
-        <ul>
+    props.items.length < 1 ? (
+      <div className={['center'].join(' ')}>
+        <h2>No users found</h2>
+      </div>
+    )
+      : (
+        <ul className={styles.UserList}>
           {props.items.map(user =>
             <UserItem
               key={user.id}
@@ -21,8 +20,8 @@ const usersList = props => {
               name={user.name}
               placeCount={user.places.length}
             />)}
-        </ul>}
-    </div>
+        </ul>
+      )
   )
 }
 
