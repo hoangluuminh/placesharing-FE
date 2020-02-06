@@ -1,22 +1,38 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import styles from './MainNavigation.module.css'
 
 import MainHeader from '../MainHeader/MainHeader'
 import NavLinks from '../NavLinks/NavLinks'
 import SideDrawer from '../SideDrawer/SideDrawer'
+import Backdrop from '../../UI/Backdrop/Backdrop'
 
-const mainNavigation = props => {
+const MainNavigation = props => {
   const APP_NAME = 'Place Sharing'
+
+  const [drawerIsOpen, setDrawerIsOpen] = useState(false)
+
+  const handleDrawerToggle = () => {
+    setDrawerIsOpen((prevState) => !prevState)
+  }
+
   return (
     <>
-      <SideDrawer>
-        <nav className={styles.drawerNav}>
-          <NavLinks />
-        </nav>
-      </SideDrawer>
+      {!drawerIsOpen ? null : (
+        <>
+          <SideDrawer>
+            <nav className={styles.drawerNav}>
+              <NavLinks />
+            </nav>
+          </SideDrawer>
+          <Backdrop onClick={handleDrawerToggle} />
+        </>
+      )}
       <MainHeader>
-        <button className={styles.menuBtn}>
+        <button
+          className={styles.menuBtn}
+          onClick={handleDrawerToggle}
+        >
           <span />
           <span />
           <span />
@@ -32,4 +48,4 @@ const mainNavigation = props => {
   )
 }
 
-export default mainNavigation
+export default MainNavigation

@@ -8,10 +8,10 @@ const navLinks = props => {
 
   return (
     <ul className={styles.NavLinks}>
-      <li><NavLink to='/' exact>All Users</NavLink></li>
-      <li><NavLink to={`/${currentUserId}/places`}>My Places</NavLink></li>
-      <li><NavLink to='/places/new'>Add Place</NavLink></li>
-      <li><NavLink to='/auth'>Authenticate</NavLink></li>
+      <li><NavLink to='/' exact activeClassName={styles.active}>All Users</NavLink></li>
+      <li><NavLink to={`/${currentUserId}/places`} activeClassName={styles.active}>My Places</NavLink></li>
+      <li><NavLink to='/places/new' activeClassName={styles.active}>Add Place</NavLink></li>
+      <li><NavLink to='/auth' activeClassName={styles.active}>Authenticate</NavLink></li>
     </ul>
   )
 }

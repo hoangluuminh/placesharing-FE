@@ -19,6 +19,10 @@ const App = () => {
           <Route path='/places/new' exact>
             <NewPlace />
           </Route>
+          <Route path='/u1/places' exact>
+          </Route>
+          <Route path='/auth' exact>
+          </Route>
           <Redirect to='/' />
         </Switch>
       </main>
