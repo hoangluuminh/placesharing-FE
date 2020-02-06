@@ -18,16 +18,12 @@ const MainNavigation = props => {
 
   return (
     <>
-      {!drawerIsOpen ? null : (
-        <>
-          <SideDrawer>
-            <nav className={styles.drawerNav}>
-              <NavLinks />
-            </nav>
-          </SideDrawer>
-          <Backdrop onClick={handleDrawerToggle} />
-        </>
-      )}
+      {!drawerIsOpen ? null : (<Backdrop onClick={handleDrawerToggle} />)}
+      <SideDrawer show={drawerIsOpen} onClick={handleDrawerToggle}>
+        <nav className={styles.drawerNav}>
+          <NavLinks />
+        </nav>
+      </SideDrawer>
       <MainHeader>
         <button
           className={styles.menuBtn}
