@@ -1,4 +1,5 @@
 import React from 'react'
+import { useParams } from 'react-router-dom'
 // import styles from './UserPlaces.module.css'
 
 import PlaceList from '../../../components/Place/PlaceList/PlaceList'
@@ -14,7 +15,7 @@ const UserPlaces = props => {
         lat: 40.7484405,
         lng: -73.9856644
       },
-      image: 'https://upload.wikimedia.org/wikipedia/commons/1/10/Empire_State_Building_%28aerial_view%29.jpg',
+      image: 'https://content.tripster.com/travelguide/wp-content/uploads/2017/09/Dropbox_Empire-State-ThinkstockPhotos-486334510-med-2-750x450.jpg',
       creator: '5e37133bdad119277c170fc5'
     },
     {
@@ -26,13 +27,15 @@ const UserPlaces = props => {
         lat: 40.7484405,
         lng: -73.9856644
       },
-      image: 'https://upload.wikimedia.org/wikipedia/commons/1/10/Empire_State_Building_%28aerial_view%29.jpg',
+      image: 'https://content.tripster.com/travelguide/wp-content/uploads/2017/09/Dropbox_Empire-State-ThinkstockPhotos-486334510-med-2-750x450.jpg',
       creator: '5e37133bdad119277c170fc5'
     }
   ]
+  const userId = useParams().userId
+  const filteredPlaces = PLACES.filter(place => place.creator === userId)
 
   return (
-    <PlaceList items={PLACES} />
+    <PlaceList items={filteredPlaces} />
   )
 }
 

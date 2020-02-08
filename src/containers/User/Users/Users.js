@@ -7,7 +7,7 @@ const users = () => {
   // DUMMY
   const USERS = [
     {
-      id: 'u1',
+      id: '5e37133bdad119277c170fc5',
       name: 'Hoang',
       image: 'https://img.icons8.com/nolan/2x/react-native.png',
       places: [{}, {}, {}]
