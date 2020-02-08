@@ -1,9 +1,12 @@
 .PlaceItem {
+  display: flex;
+  justify-content: center;
   margin: 1rem 0;
 }
 
 .content {
   padding: 0;
+  max-width: initial;
 }
 
 .info {
@@ -52,4 +55,7 @@
   .image {
     height: 20rem;
   } 
+  .content {
+    max-width: 30rem;
+  }
 }

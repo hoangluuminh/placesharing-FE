@@ -16,7 +16,7 @@ const PlaceList = props => {
       </div>
     )
       : (
-        <ul className={styles.UserList}>
+        <ul className={styles.PlaceList}>
           {props.items.map(place =>
             <PlaceItem
               key={place.id}
