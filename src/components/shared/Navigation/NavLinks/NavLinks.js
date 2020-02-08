@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom'
 import styles from './NavLinks.module.css'
 
 const navLinks = props => {
-  const currentUserId = 'u1' // DUMMY
+  const currentUserId = '5e37133bdad119277c170fc5' // DUMMY
 
   return (
     <ul className={styles.NavLinks}>

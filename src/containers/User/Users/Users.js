@@ -1,5 +1,5 @@
 import React from 'react'
-import styles from './Users.module.css'
+// import styles from './Users.module.css'
 
 import UsersList from '../../../components/User/UsersList/UsersList'
 
@@ -15,9 +15,7 @@ const users = () => {
   ]
 
   return (
-    <div className={styles.Users}>
-      <UsersList items={USERS} />
-    </div>
+    <UsersList items={USERS} />
   )
 }
 

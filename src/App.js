@@ -5,6 +5,7 @@ import './App.css'
 
 import Users from './containers/User/Users/Users'
 import NewPlace from './containers/Place/NewPlace/NewPlace'
+import UserPlaces from './containers/Place/UserPlaces/UserPlaces'
 import MainNavigation from './components/shared/Navigation/MainNavigation/MainNavigation'
 
 const App = () => {
@@ -13,14 +14,9 @@ const App = () => {
       <MainNavigation />
       <main>
         <Switch>
-          <Route path='/' exact>
-            <Users />
-          </Route>
-          <Route path='/places/new' exact>
-            <NewPlace />
-          </Route>
-          <Route path='/u1/places' exact>
-          </Route>
+          <Route path='/' exact component={Users} />
+          <Route path='/places/new' exact component={NewPlace} />
+          <Route path='/:userId/places' exact component={UserPlaces} />
           <Route path='/auth' exact>
           </Route>
           <Redirect to='/' />
