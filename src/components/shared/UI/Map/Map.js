@@ -15,9 +15,7 @@ const Map = props => {
       ref={mapRef}
       className={[styles.Map, props.className].join(' ')}
       style={props.style}
-    >
-      <h3>I am a Map!!!</h3>
-    </div>
+    />
   )
 }
 
