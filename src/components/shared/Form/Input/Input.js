@@ -1,13 +1,21 @@
 import React, { useReducer } from 'react'
 import styles from './Input.module.css'
 
+import { validate } from '../../../../utils/validators'
+
 const inputReducer = (state, action) => {
   switch (action.type) {
     case 'CHANGE': {
       return {
         ...state,
         value: action.payload.value,
-        isValid: true
+        isValid: validate(action.payload.value, action.payload.validators)
+      }
+    }
+    case 'TOUCH': {
+      return {
+        ...state,
+        isTouched: true
       }
     }
     default: {
@@ -17,10 +25,17 @@ const inputReducer = (state, action) => {
 }
 
 const Input = props => {
-  const [inputState, dispatchInputChange] = useReducer(inputReducer, { value: '', isValid: false })
+  const [inputState, dispatchInput] = useReducer(inputReducer, { value: '', isValid: false, isTouched: false })
 
   const handleOnChange = event => {
-    dispatchInputChange({ type: 'CHANGE', payload: { value: event.target.value } })
+    dispatchInput({
+      type: 'CHANGE',
+      payload: { value: event.target.value, validators: props.validators }
+    })
+  }
+
+  const handleTouch = () => {
+    dispatchInput({ type: 'TOUCH' })
   }
 
   const element = props.element === 'textarea' ? (
@@ -28,6 +43,7 @@ const Input = props => {
       id={props.id}
       rows={props.rows || 3}
       onChange={handleOnChange}
+      onBlur={handleTouch}
       value={inputState.value}
     />
   ) : (
@@ -36,15 +52,16 @@ const Input = props => {
       type={props.type}
       placeholder={props.placeholder}
       onChange={handleOnChange}
+      onBlur={handleTouch}
       value={inputState.value}
     />
   )
 
   return (
-    <div className={[styles.formControl, (!inputState.isValid) ? styles.invalid : ''].join(' ')}>
+    <div className={[styles.formControl, (inputState.isTouched && !inputState.isValid) ? styles.invalid : ''].join(' ')}>
       <label htmlFor={props.id}>{props.label}</label>
       {element}
-      {!inputState.isValid && <p>{props.errorText}</p>}
+      {(inputState.isTouched && !inputState.isValid) && <p>{props.errorText}</p>}
     </div>
   )
 }
