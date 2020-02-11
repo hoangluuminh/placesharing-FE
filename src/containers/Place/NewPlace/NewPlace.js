@@ -35,14 +35,9 @@ const NewPlace = () => {
   }
   const [formState, dispatchForm] = useReducer(formReducer, {
     inputs: {
-      title: {
-        value: '',
-        isValid: false
-      },
-      description: {
-        value: '',
-        isValid: false
-      }
+      title: { value: '', isValid: false },
+      description: { value: '', isValid: false },
+      address: { value: '', isValid: false }
     },
     isValid: false
   })
@@ -51,11 +46,15 @@ const NewPlace = () => {
     dispatchForm({ type: 'INPUT_CHANGE', payload: { value, isValid, inputId: id } })
   }, [])
 
+  const handlePlaceSubmit = event => {
+    event.preventDefault()
+    console.log(formState.inputs) // TODO: Send it to the backend
+  }
+
   return (
-    <form className={styles.placeForm}>
+    <form className={styles.placeForm} onSubmit={handlePlaceSubmit}>
       <Input
         id='title'
-        type='text'
         label='Title'
         validators={[check.REQUIRE()]}
         onInput={handleInput}
@@ -67,7 +66,14 @@ const NewPlace = () => {
         label='Description'
         validators={[check.MINLENGTH(5)]}
         onInput={handleInput}
-        errorText='Must be over 5 characters.'
+        errorText='Must be at least 5 characters.'
+      />
+      <Input
+        id='address'
+        label='Address'
+        validators={[check.REQUIRE()]}
+        onInput={handleInput}
+        errorText='Required.'
       />
       <Button type='submit' disabled={!formState.isValid}>
         ADD PLACE
