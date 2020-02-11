@@ -1,5 +1,5 @@
 import React, { useReducer, useCallback } from 'react'
-//import styles from './NewPlace.module.css'
+// import styles from './NewPlace.module.css'
 import stylesForm from '../../../styles/form.module.css'
 
 import Input from '../../../components/shared/Form/Input/Input'
