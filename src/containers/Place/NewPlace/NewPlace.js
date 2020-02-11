@@ -1,5 +1,6 @@
 import React, { useReducer, useCallback } from 'react'
-import styles from './NewPlace.module.css'
+//import styles from './NewPlace.module.css'
+import stylesForm from '../../../styles/form.module.css'
 
 import Input from '../../../components/shared/Form/Input/Input'
 import Button from '../../../components/shared/Form/Button/Button'
@@ -52,10 +53,11 @@ const NewPlace = () => {
   }
 
   return (
-    <form className={styles.placeForm} onSubmit={handlePlaceSubmit}>
+    <form className={stylesForm.placeForm} onSubmit={handlePlaceSubmit}>
       <Input
         id='title'
         label='Title'
+        type='text'
         validators={[check.REQUIRE()]}
         onInput={handleInput}
         errorText='Required.'
@@ -71,6 +73,7 @@ const NewPlace = () => {
       <Input
         id='address'
         label='Address'
+        type='text'
         validators={[check.REQUIRE()]}
         onInput={handleInput}
         errorText='Required.'
